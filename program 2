@@ -1,0 +1,66 @@
+#include <iostream>
+#include<string>
+using namespace std;
+class Employee 
+{
+private:
+    int emp_no;
+    string emp_name;
+    float basic_pay, DA, HRA, CCA, PF, gross_pay, net_pay;
+
+public:
+    void getdata() 
+	{
+        cout << "Enter Employee Number: ";
+        cin >> emp_no;
+        cout << "Enter Employee Name: ";
+        cin >> emp_name;
+        cout << "Enter Basic Pay: ";
+        cin >> basic_pay;
+    }
+
+    void calculate() 
+	{
+        DA  = 0.32 * basic_pay;
+        HRA = 0.15 * basic_pay;
+        CCA = 0.10 * basic_pay;
+        PF  = 0.15 * basic_pay;
+
+        gross_pay = basic_pay + DA + HRA + CCA + PF;
+        net_pay   = gross_pay - PF;
+    }
+
+    void display() 
+	{
+        cout << "\n==============================\n";
+        cout << "Salary Slip for Employee\n";
+        cout << "==============================\n";
+        cout << "Employee No   : " << emp_no << endl;
+        cout << "Employee Name : " << emp_name << endl;
+        cout << "Basic Pay     : " << basic_pay << endl;
+        cout << "DA (32%)      : " << DA << endl;
+        cout << "HRA (15%)     : " << HRA << endl;
+        cout << "CCA (10%)     : " << CCA << endl;
+        cout << "PF (15%)      : " << PF << endl;
+        cout << "Gross Pay     : " << gross_pay << endl;
+        cout << "Net Pay       : " << net_pay << endl;
+        cout << "==============================\n";
+    }
+};
+int main() 
+{
+    Employee emp[5];
+    cout << "Enter details for 5 employees:\n";
+    for (int i = 0; i < 5; i++) 
+	{
+        cout << "\nEmployee " << i + 1 << ":\n";
+        emp[i].getdata();
+        emp[i].calculate();
+    }
+    cout << "\n\nSalary Slips:\n";
+    for (int i = 0; i < 5; i++) 
+	{
+        emp[i].display();
+    }
+    return 0;
+}
