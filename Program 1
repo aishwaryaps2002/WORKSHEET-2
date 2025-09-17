@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+
+class Batsman 
+{
+private:
+    int bcode, innings, notout, runs;
+    string bname;
+    float batavg;
+
+public:
+    void setdata(int c, string name, int i, int n, int r) 
+	{
+        bcode = c;
+        bname = name;
+        innings = i;
+        notout = n;
+        runs = r;
+    }
+
+    void calcavg() {
+        if (innings - notout != 0)
+            batavg = float(runs) / (innings - notout);
+        else
+            batavg = 0;
+    }
+
+    void displaydata() 
+	{
+        cout << bcode << " " << bname << " " << innings << " " << notout << " " << runs << " " << batavg << endl;
+    }
+};
+
+int main() {
+    Batsman players[10];
+
+    // Random names with some sample stats
+    players[0].setdata(1, "Alex", 20, 2, 500);
+    players[1].setdata(2, "Brian", 18, 3, 450);
+    players[2].setdata(3, "Charlie", 22, 4, 600);
+    players[3].setdata(4, "David", 19, 1, 480);
+    players[4].setdata(5, "Ethan", 21, 5, 520);
+    players[5].setdata(6, "Frank", 17, 2, 400);
+    players[6].setdata(7, "George", 23, 3, 610);
+    players[7].setdata(8, "Harry", 20, 2, 530);
+    players[8].setdata(9, "Ian", 18, 1, 470);
+    players[9].setdata(10, "Jack", 19, 0, 490);
+
+    for (int i = 0; i < 10; i++) 
+	{
+        players[i].calcavg();
+        players[i].displaydata();
+    }
+
+    return 0;
+}
